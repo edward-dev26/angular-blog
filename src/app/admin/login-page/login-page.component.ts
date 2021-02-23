@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
   form: FormGroup;
+  isSubmitting = false;
 
   constructor(
     private auth: AuthService,
@@ -35,8 +36,11 @@ export class LoginPageComponent implements OnInit {
   }
 
   submit() {
-    this.auth.login({...this.form.value}).subscribe(() => {
-      this.router.navigate(['/admin', 'dashboard']);
-    });
+    this.isSubmitting = true;
+    this.auth.login({...this.form.value})
+      .subscribe(() => {
+        this.isSubmitting = false;
+        this.router.navigate(['/admin', 'dashboard']);
+      });
   }
 }

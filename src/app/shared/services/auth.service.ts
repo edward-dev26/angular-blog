@@ -6,8 +6,14 @@ import {tap} from 'rxjs/operators';
 
 const URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`;
 
+enum LocalStorageKeys {
+  Token = 'fb-token',
+  TokenExp = 'fb-token-exp'
+}
+
 interface AuthResponse {
   idToken: string;
+  expiresIn: string;
 }
 
 @Injectable()
@@ -17,20 +23,42 @@ export class AuthService {
   ) {}
 
   private get token() {
-    return '';
+    const expDate = new Date(localStorage.getItem(LocalStorageKeys.TokenExp));
+
+    if (new Date() > expDate) {
+      this.logout();
+
+      return null;
+    }
+
+    return localStorage.getItem(LocalStorageKeys.Token);
   }
 
   login(user: User) {
-    return this.http.post(URL, user).pipe(tap(this.setToken));
+    return this.http.post(URL, {
+      ...user,
+      returnSecureToken: true
+    })
+      .pipe(tap(this.setToken));
   }
 
-  logout() {}
+  logout() {
+    this.setToken(null);
+  }
 
   isAuthenticated() {
     return !!this.token;
   }
 
-  private setToken(response: AuthResponse) {
-    console.log(response);
+  private setToken(response: AuthResponse | null) {
+    if (response) {
+      const expDate = new Date(new Date().getTime() + +response.expiresIn * 1000);
+
+      localStorage.setItem(LocalStorageKeys.Token, response.idToken);
+      localStorage.setItem(LocalStorageKeys.TokenExp, expDate.toString());
+    } else {
+      localStorage.removeItem(LocalStorageKeys.Token);
+      localStorage.removeItem(LocalStorageKeys.TokenExp);
+    }
   }
 }

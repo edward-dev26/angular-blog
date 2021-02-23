@@ -4,15 +4,20 @@
   </h1>
 
   <ul>
-    <li routerLinkActive="active">
-      <a [routerLink]="['/admin', 'dashboard']">Dashboard</a>
+    <li routerLinkActive="active" *ngIf="!auth.isAuthenticated(); else elseBlock;">
+      <a [routerLink]="['/admin', 'login']">Login</a>
     </li>
-    <li routerLinkActive="active">
-      <a [routerLink]="['/admin','post' ,'create']">Create post</a>
-    </li>
-    <li>
-      <a href="#" (click)="logout($event)">Logout</a>
-    </li>
+    <ng-template #elseBlock>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin', 'dashboard']">Dashboard</a>
+      </li>
+      <li routerLinkActive="active">
+        <a [routerLink]="['/admin','post' ,'create']">Create post</a>
+      </li>
+      <li>
+        <a href="#" (click)="logout($event)">Logout</a>
+      </li>
+    </ng-template>
   </ul>
 </nav>
 

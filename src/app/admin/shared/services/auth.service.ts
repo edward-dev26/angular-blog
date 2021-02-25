@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {User} from '../interfaces';
-import {environment} from '../../../environments/environment';
-import {tap} from 'rxjs/operators';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {User} from '../../../shared/interfaces';
+import {environment} from '../../../../environments/environment';
+import {catchError, tap} from 'rxjs/operators';
+import {Subject, throwError} from 'rxjs';
 
 const URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.apiKey}`;
 
@@ -18,9 +19,12 @@ interface AuthResponse {
 
 @Injectable()
 export class AuthService {
+  public error$ = new Subject();
+
   constructor(
     private http: HttpClient
-  ) {}
+  ) {
+  }
 
   private get token() {
     const expDate = new Date(localStorage.getItem(LocalStorageKeys.TokenExp));
@@ -39,7 +43,22 @@ export class AuthService {
       ...user,
       returnSecureToken: true
     })
-      .pipe(tap(this.setToken));
+      .pipe(
+        tap(this.setToken),
+        catchError(this.handleError.bind(this))
+      );
+  }
+
+  handleError(httpError: HttpErrorResponse) {
+    const messages = {
+      ['EMAIL_NOT_FOUND']: 'This email doesn\'t exist!',
+      ['INVALID_PASSWORD']: 'This password is invalid!',
+      ['USER_DISABLED']: 'This user has been disabled!'
+    };
+
+    this.error$.next(messages[httpError.error.error.message]);
+
+    return throwError(httpError);
   }
 
   logout() {

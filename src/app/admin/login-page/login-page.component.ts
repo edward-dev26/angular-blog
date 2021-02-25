@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../../shared/services/auth.service';
+import {AuthService} from '../shared/services/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginPageComponent implements OnInit {
   isSubmitting = false;
 
   constructor(
-    private auth: AuthService,
+    public auth: AuthService,
     private router: Router
   ) {
   }
@@ -38,9 +38,14 @@ export class LoginPageComponent implements OnInit {
   submit() {
     this.isSubmitting = true;
     this.auth.login({...this.form.value})
-      .subscribe(() => {
-        this.isSubmitting = false;
-        this.router.navigate(['/admin', 'dashboard']);
-      });
+      .subscribe(
+        () => {
+          this.isSubmitting = false;
+          this.router.navigate(['/admin', 'dashboard']);
+        },
+        () => {
+          this.isSubmitting = false;
+        }
+      );
   }
 }

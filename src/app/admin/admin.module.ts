@@ -8,6 +8,7 @@ import {EditPageComponent} from './edit-page/edit-page.component';
 import {DashboardPageComponent} from './dashboard-page/dashboard-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './shared/services/auth.service';
+import {AuthGuard} from './shared/services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {AuthService} from './shared/services/auth.service';
     ReactiveFormsModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   exports: [AdminRoutingModule]
 })

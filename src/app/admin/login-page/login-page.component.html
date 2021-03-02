@@ -3,43 +3,25 @@
   <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
     {{ error }}
   </div>
-  <div
-    class="form-control"
-    [ngClass]="{invalid: isInvalid('email')}"
-  >
-    <label for="email">Email</label>
-    <input id="email" type="email" formControlName="email">
-    <div
-      *ngIf="isInvalid('email')"
-      class="validation"
-    >
-      <small *ngIf="form.get('email').errors.required">
-        This field is required!
-      </small>
-      <small *ngIf="form.get('email').errors.email">
-        Please enter correct email!
-      </small>
-    </div>
-  </div>
-  <div
-    [ngClass]="{invalid: isInvalid('password')}"
-    class="form-control"
-  >
-    <label for="password">Password</label>
-    <input id="password" type="password" formControlName="password">
-    <div
-      *ngIf="isInvalid('password')"
-      class="validation"
-    >
-      <small *ngIf="form.get('password').errors.required">
-        This field is required!
-      </small>
-      <small *ngIf="form.get('password').errors.minlength">
-        Min password length is
-        {{ form.get('password').errors.minlength.requiredLength }} symbols!
-      </small>
-    </div>
-  </div>
+  <app-form-control
+    [form]="form"
+    name="email"
+    label="Email"
+    [validationMessages]="{
+      required: 'This field is required!',
+      email: 'Please enter correct email!'
+    }"
+  ></app-form-control>
+  <app-form-control
+    [form]="form"
+    name="password"
+    type="password"
+    label="Password"
+    [validationMessages]="{
+      required: 'This field is required!',
+      minlength: getMinLengthMessage
+    }"
+  ></app-form-control>
   <button
     type="submit"
     class="btn btn-primary"

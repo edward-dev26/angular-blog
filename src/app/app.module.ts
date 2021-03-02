@@ -15,7 +15,7 @@ import {PostComponent} from './shared/components/post/post.component';
     MainLayoutComponent,
     HomePageComponent,
     PostPageComponent,
-    PostComponent
+    PostComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,6 +23,7 @@ import {PostComponent} from './shared/components/post/post.component';
     SharedModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

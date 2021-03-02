@@ -1,0 +1,18 @@
+<div
+  class="form-control"
+  [ngClass]="{invalid: isInvalid()}"
+  [formGroup]="form"
+>
+  <label [for]="name">{{ label }}</label>
+  <input [id]="name" [type]="type" [formControlName]="name">
+  <div
+    *ngIf="isInvalid()"
+    class="validation"
+  >
+    <ng-container *ngFor="let item of validationMessages | keyvalue">
+      <small *ngIf="form.get(name).errors[item.key] as error">
+        {{ getErrorMessage(item.value, error) }}
+      </small>
+    </ng-container>
+  </div>
+</div>

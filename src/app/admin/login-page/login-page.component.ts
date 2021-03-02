@@ -35,6 +35,10 @@ export class LoginPageComponent implements OnInit {
     return this.form.get(controlName).touched && this.form.get(controlName).invalid;
   }
 
+  getMinLengthMessage(error) {
+    return `Min password length is ${error.requiredLength} symbols!`;
+  }
+
   submit() {
     this.isSubmitting = true;
     this.auth.login({...this.form.value})

@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 
 type TGetMessage = (error: string | object) => string | void;
+type TControlType = 'input' | 'editor';
 
 @Component({
   selector: 'app-form-control',
@@ -12,7 +13,9 @@ export class FormControlComponent {
   @Input() form: FormGroup;
   @Input() name: string;
   @Input() label: string;
-  @Input() type = 'text';
+  @Input() placeholder = '';
+  @Input() type: TControlType = 'input';
+  @Input() htmlType = 'text';
   @Input() validationMessages: { [key: string]: string | TGetMessage };
 
   isInvalid() {
@@ -20,6 +23,8 @@ export class FormControlComponent {
   }
 
   getErrorMessage(message: string | TGetMessage, error: string | object) {
+    console.log(error);
+    console.log(message);
     return typeof message === 'function' ? message(error) : message;
   }
 }

@@ -1,7 +1,7 @@
 <form class="card" [formGroup]="form" (ngSubmit)="submit()">
   <h2>Login to admin panel</h2>
-  <div class="alert alert-danger" *ngIf="auth.error$ | async as error">
-    {{ error }}
+  <div class="alert alert-danger" *ngIf="message">
+    {{ message }}
   </div>
   <app-form-control
     [form]="form"
@@ -15,7 +15,7 @@
   <app-form-control
     [form]="form"
     name="password"
-    type="password"
+    htmlType="password"
     label="Password"
     [validationMessages]="{
       required: 'This field is required!',

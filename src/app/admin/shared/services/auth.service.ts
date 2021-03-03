@@ -17,7 +17,7 @@ interface AuthResponse {
   expiresIn: string;
 }
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AuthService {
   public error$ = new Subject();
 
@@ -26,7 +26,7 @@ export class AuthService {
   ) {
   }
 
-  private get token() {
+  public get token() {
     const expDate = new Date(localStorage.getItem(LocalStorageKeys.TokenExp));
 
     if (new Date() > expDate) {

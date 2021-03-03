@@ -6,7 +6,6 @@ import {CreatePageComponent} from './create-page/create-page.component';
 import {EditPageComponent} from './edit-page/edit-page.component';
 import {DashboardPageComponent} from './dashboard-page/dashboard-page.component';
 import {FormsModule} from '@angular/forms';
-import {AuthService} from './shared/services/auth.service';
 import {AuthGuard} from './shared/services/auth.guard';
 import {SharedModule} from '../shared/shared.module';
 import {FormControlComponent} from '../shared/components/form-control/form-control.component';
@@ -26,7 +25,6 @@ import {FormControlComponent} from '../shared/components/form-control/form-contr
     SharedModule,
   ],
   providers: [
-    AuthService,
     AuthGuard
   ],
   exports: [AdminRoutingModule]

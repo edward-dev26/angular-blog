@@ -4,7 +4,24 @@
   [formGroup]="form"
 >
   <label [for]="name">{{ label }}</label>
-  <input [id]="name" [type]="type" [formControlName]="name">
+  <ng-container [ngSwitch]="type">
+    <quill-editor
+      *ngSwitchCase="'editor'"
+      [id]="name"
+      [formControlName]="name"
+      [placeholder]="placeholder"
+      [styles]="{
+        height: '150px'
+      }"
+    ></quill-editor>
+    <input
+      *ngSwitchDefault
+      [id]="name"
+      [type]="htmlType"
+      [formControlName]="name"
+      [placeholder]="placeholder"
+    >
+  </ng-container>
   <div
     *ngIf="isInvalid()"
     class="validation"

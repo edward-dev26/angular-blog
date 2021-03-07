@@ -10,8 +10,9 @@ import {Subscription} from 'rxjs';
 })
 export class DashboardPageComponent implements OnInit, OnDestroy {
   public posts: Post[];
-  private postsSubscription: Subscription;
+  private subscriptions: Subscription[] = [];
   public loading = false;
+  public term = '';
 
   constructor(
     private postsService: PostsService
@@ -20,7 +21,7 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loading = true;
-    this.postsSubscription = this.postsService.getAll().subscribe(
+    const subscription = this.postsService.getAll().subscribe(
       (posts) => {
         this.posts = posts;
         this.loading = false;
@@ -29,15 +30,21 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
         this.loading = false;
       }
     );
+
+    this.subscriptions.push(subscription);
   }
 
   ngOnDestroy() {
-    if (this.postsSubscription) {
-      this.postsSubscription.unsubscribe();
-    }
+    this.subscriptions.forEach(subscription => {
+      subscription?.unsubscribe();
+    });
   }
 
-  remove(id: TId) {
-    console.log('Remove: ', id);
+  delete(id: TId) {
+    const subscription = this.postsService.delete(id).subscribe(() => {
+      this.posts = this.posts.filter(post => post.id !== id);
+    });
+
+    this.subscriptions.push(subscription);
   }
 }

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {FbCreateResponse, Post} from '../interfaces';
+import {FbCreateResponse, Post, TId} from '../interfaces';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {map} from 'rxjs/operators';
@@ -35,5 +35,9 @@ export class PostsService {
             }));
         })
       );
+  }
+
+  delete(id: TId) {
+    return this.http.delete(url + id + '.json');
   }
 }

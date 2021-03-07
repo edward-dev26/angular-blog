@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import {AuthGuard} from './shared/services/auth.guard';
 import {SharedModule} from '../shared/shared.module';
 import {FormControlComponent} from '../shared/components/form-control/form-control.component';
+import {SearchPipe} from './shared/pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {FormControlComponent} from '../shared/components/form-control/form-contr
     CreatePageComponent,
     EditPageComponent,
     DashboardPageComponent,
-    FormControlComponent
+    FormControlComponent,
+    SearchPipe
   ],
   imports: [
     AdminRoutingModule,

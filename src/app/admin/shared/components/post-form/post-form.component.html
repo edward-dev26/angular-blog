@@ -1,0 +1,31 @@
+<form [formGroup]="form" (ngSubmit)="handleSubmit()">
+  <app-form-control
+    name="title"
+    label="Title"
+    placeholder="Type post title"
+    [form]="form"
+    [validationMessages]="validationMessages"
+  ></app-form-control>
+  <app-form-control
+    name="content"
+    label="Content"
+    type="editor"
+    placeholder="Type post content"
+    [form]="form"
+    [validationMessages]="validationMessages"
+  ></app-form-control>
+  <app-form-control
+    name="author"
+    label="Author"
+    placeholder="Type post author"
+    [form]="form"
+    [validationMessages]="validationMessages"
+  ></app-form-control>
+  <button
+    class="btn btn-block btn-success"
+    type="submit"
+    [disabled]="form.invalid"
+  >
+    {{ btnText }}
+  </button>
+</form>

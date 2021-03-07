@@ -1,1 +1,10 @@
-<p>edit-page works!</p>
+<div>
+  <h1>Edit Post</h1>
+  <app-post-form
+    btnText="Save changes"
+    [initialValue$]="initialValue$"
+    [isSubmitting]="isSubmitting"
+    (onSubmit)="handleSubmit($event)"
+  >
+  </app-post-form>
+</div>

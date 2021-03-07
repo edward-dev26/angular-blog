@@ -12,6 +12,14 @@ export class PostsService {
   constructor(private http: HttpClient) {
   }
 
+  private normalizeDate(post: Post, id: TId): Post {
+    return {
+      ...post,
+      id,
+      date: new Date(post.date)
+    };
+  }
+
   create(post: Post) {
     return this.http.post<FbCreateResponse>(`${url}.json`, post)
       .pipe(
@@ -28,12 +36,22 @@ export class PostsService {
         map((response: { [keys: string]: Post }) => {
           return Object
             .keys(response)
-            .map((key) => ({
-              ...response[key],
-              id: key,
-              date: new Date(response[key].date)
-            }));
+            .map((key) => this.normalizeDate(response[key], key));
         })
+      );
+  }
+
+  getById(id: TId): Observable<Post> {
+    return this.http.get(url + id + '.json')
+      .pipe(
+        map((response: Post) => this.normalizeDate(response, id))
+      );
+  }
+
+  update(post: Post): Observable<Post> {
+    return this.http.patch<Post>(url + post.id + '.json', post)
+      .pipe(
+        map((response) => this.normalizeDate(response, post.id))
       );
   }
 

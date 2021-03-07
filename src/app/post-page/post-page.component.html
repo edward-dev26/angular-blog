@@ -1,29 +1,22 @@
-<div class="post">
-  <div class="header">
-    <h1>Post title</h1>
-    <button
-      [routerLink]="['/post', 2]"
-      class="btn btn-link"
-    >
-      Home page
-    </button>
-  </div>
-  <div class="info">
-    <strong>Author</strong>
-    <small>19.01.2021</small>
-  </div>
-  <div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda atque cum dolorem ea, et fuga
-      illum impedit laudantium magni, maxime minima nemo porro quaerat quod sunt vitae! Alias, cum cumque cupiditate ea
-      eaque labore laudantium libero, mollitia nisi obcaecati optio placeat praesentium quisquam quo ratione tempore
-      veniam voluptates, voluptatum?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda atque cum dolorem ea, et fuga
-      illum impedit laudantium magni, maxime minima nemo porro quaerat quod sunt vitae! Alias, cum cumque cupiditate ea
-      eaque labore laudantium libero, mollitia nisi obcaecati optio placeat praesentium quisquam quo ratione tempore
-      veniam voluptates, voluptatum?</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda atque cum dolorem ea, et fuga
-      illum impedit laudantium magni, maxime minima nemo porro quaerat quod sunt vitae! Alias, cum cumque cupiditate ea
-      eaque labore laudantium libero, mollitia nisi obcaecati optio placeat praesentium quisquam quo ratione tempore
-      veniam voluptates, voluptatum?</p>
-  </div>
+<div class="text-center" *ngIf="loading; else postBlock">
+  <p>Loading...</p>
 </div>
+
+<ng-template #postBlock>
+  <div class="post">
+    <div class="header">
+      <h1>Post title</h1>
+      <button
+        [routerLink]="['/']"
+        class="btn btn-link"
+      >
+        Home page
+      </button>
+    </div>
+    <div class="info">
+      <strong>{{ post.author }}</strong>
+      <small>{{ post.date | date: 'yyyy-MM-dd' }}</small>
+    </div>
+    <quill-view-html [content]="post.content"></quill-view-html>
+  </div>
+</ng-template>

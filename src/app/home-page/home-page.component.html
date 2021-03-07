@@ -1,6 +1,18 @@
-<div class="posts">
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
-  <app-post></app-post>
+<div class="text-center" *ngIf="loading; else postsBlock">
+  <p>Loading...</p>
 </div>
+
+<ng-template #postsBlock>
+  <div class="posts" *ngIf="posts?.length">
+    <app-post
+      *ngFor="let post of posts"
+      [post]="post"
+    ></app-post>
+  </div>
+</ng-template>
+
+<ng-template>
+  <div class="text-center">
+    <p>No data!</p>
+  </div>
+</ng-template>

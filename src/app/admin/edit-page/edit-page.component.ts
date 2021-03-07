@@ -6,6 +6,7 @@ import {PostFormValue} from '../shared/components/post-form/post-form.component'
 import {Subject} from 'rxjs';
 import {Post} from '../../shared/interfaces';
 import {FormGroup} from '@angular/forms';
+import {AlertService} from '../shared/services/alert.service';
 
 interface Params {
   id: string;
@@ -23,7 +24,8 @@ export class EditPageComponent implements OnInit {
 
   constructor(
     private postsService: PostsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alert: AlertService
   ) {
   }
 
@@ -53,6 +55,7 @@ export class EditPageComponent implements OnInit {
       .subscribe(
         () => {
           this.isSubmitting = false;
+          this.alert.success('Changes have been saved!');
         },
         () => {
           this.isSubmitting = false;

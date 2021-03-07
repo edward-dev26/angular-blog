@@ -9,8 +9,7 @@ const url = `${environment.fbDbUrl}posts/`;
 
 @Injectable({providedIn: 'root'})
 export class PostsService {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   private normalizeDate(post: Post, id: TId): Post {
     return {

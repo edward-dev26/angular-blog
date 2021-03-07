@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Post} from '../../shared/interfaces';
 import {PostsService} from '../../shared/services/posts.service';
 import {FormGroup} from '@angular/forms';
+import {AlertService} from '../shared/services/alert.service';
 
 @Component({
   selector: 'app-create-page',
@@ -12,7 +13,8 @@ export class CreatePageComponent {
   public isSubmitting = false;
 
   constructor(
-    private postsService: PostsService
+    private postsService: PostsService,
+    private alert: AlertService
   ) {
   }
 
@@ -31,9 +33,12 @@ export class CreatePageComponent {
         () => {
           this.isSubmitting = false;
           form.reset();
+          this.alert.success('Post has been created!');
+
         },
         () => {
           this.isSubmitting = false;
+          this.alert.danger('Ops! Something went wrong!');
         }
       );
   }

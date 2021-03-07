@@ -147,6 +147,13 @@ img {
   opacity: 0.9;
   background: var(--light-color);
   color: #333;
+
+  &-wrap {
+    position: fixed;
+    z-index: 100;
+    right: 30px;
+    top: 70px;
+  }
 }
 
 .btn-primary,

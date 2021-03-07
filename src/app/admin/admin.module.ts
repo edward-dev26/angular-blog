@@ -11,6 +11,8 @@ import {SharedModule} from '../shared/shared.module';
 import {FormControlComponent} from '../shared/components/form-control/form-control.component';
 import {SearchPipe} from './shared/pipes/search.pipe';
 import { PostFormComponent } from './shared/components/post-form/post-form.component';
+import { AlertComponent } from './shared/components/alert/alert.component';
+import {AlertService} from './shared/services/alert.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { PostFormComponent } from './shared/components/post-form/post-form.compo
     DashboardPageComponent,
     FormControlComponent,
     SearchPipe,
-    PostFormComponent
+    PostFormComponent,
+    AlertComponent
   ],
   imports: [
     AdminRoutingModule,
@@ -29,7 +32,8 @@ import { PostFormComponent } from './shared/components/post-form/post-form.compo
     SharedModule,
   ],
   providers: [
-    AuthGuard
+    AuthGuard,
+    AlertService
   ],
   exports: [AdminRoutingModule]
 })

@@ -23,8 +23,6 @@ export class FormControlComponent {
   }
 
   getErrorMessage(message: string | TGetMessage, error: string | object) {
-    console.log(error);
-    console.log(message);
     return typeof message === 'function' ? message(error) : message;
   }
 }

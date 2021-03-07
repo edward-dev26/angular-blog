@@ -10,9 +10,10 @@ import {PostsService} from '../../shared/services/posts.service';
 })
 export class CreatePageComponent implements OnInit {
   public form: FormGroup;
+  public isSubmitting = false;
   public validationMessages = {
     required: 'This field is required!',
-    minLength: (error) => `Min length is ${error.requiredLength} symbols!`
+    minlength: (error) => `Min length is ${error.requiredLength} symbols!`
   };
 
   constructor(
@@ -37,6 +38,8 @@ export class CreatePageComponent implements OnInit {
   }
 
   handleSubmit() {
+    this.isSubmitting = true;
+
     const post: Post = {
       title: this.form.value.title,
       content: this.form.value.content,
@@ -45,9 +48,14 @@ export class CreatePageComponent implements OnInit {
     };
 
     this.postsService.create(post)
-      .subscribe((newPost) => {
-        this.form.reset();
-        console.log(newPost);
-      });
+      .subscribe(
+        () => {
+          this.form.reset();
+          this.isSubmitting = false;
+        },
+        () => {
+          this.isSubmitting = false;
+        }
+      );
   }
 }

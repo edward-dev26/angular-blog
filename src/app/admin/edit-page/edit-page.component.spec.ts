@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditPageComponent } from './edit-page.component';
+import {AppModule} from '../../app.module';
+import {AdminModule} from '../admin.module';
 
 describe('EditPageComponent', () => {
   let component: EditPageComponent;
@@ -8,7 +10,11 @@ describe('EditPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditPageComponent ]
+      declarations: [ EditPageComponent ],
+      imports: [
+        AppModule,
+        AdminModule
+      ]
     })
     .compileComponents();
   });

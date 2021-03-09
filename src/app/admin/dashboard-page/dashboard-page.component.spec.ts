@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardPageComponent } from './dashboard-page.component';
+import {AdminModule} from '../admin.module';
+import {AppModule} from '../../app.module';
 
 describe('DashboardPageComponent', () => {
   let component: DashboardPageComponent;
@@ -8,7 +10,11 @@ describe('DashboardPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardPageComponent ]
+      declarations: [ DashboardPageComponent ],
+      imports: [
+        AdminModule,
+        AppModule
+      ]
     })
     .compileComponents();
   });

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreatePageComponent } from './create-page.component';
+import {AppModule} from '../../app.module';
+import {AdminModule} from '../admin.module';
 
 describe('CreatePageComponent', () => {
   let component: CreatePageComponent;
@@ -8,7 +10,11 @@ describe('CreatePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreatePageComponent ]
+      declarations: [ CreatePageComponent ],
+      imports: [
+        AppModule,
+        AdminModule
+      ]
     })
     .compileComponents();
   });

@@ -12,6 +12,7 @@ import {PostComponent} from './shared/components/post/post.component';
 import {HeaderComponent} from './shared/components/header/header.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AuthInterceptor} from './shared/services/auth.interceptor';
+import {PostImageComponent} from './shared/components/post-image/post-image.component';
 
 import { environment } from '../environments/environment';
 
@@ -28,7 +29,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     HomePageComponent,
     PostPageComponent,
     PostComponent,
-    HeaderComponent
+    HeaderComponent,
+    PostImageComponent
   ],
   imports: [
     BrowserModule,

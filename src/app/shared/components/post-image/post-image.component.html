@@ -1,0 +1,20 @@
+<div class="post-image" [ngClass]="{'post-image_animate': animate}">
+  <a class="post-image__link" [routerLink]="routerLink" *ngIf="routerLink; else imageBlock">
+    <img
+      src="https://demo.goodlayers.com/akea/wp-content/uploads/2018/11/pexels-photo-25284-1000x486.jpg"
+      alt="post image"
+    >
+  </a>
+  <ng-template #imageBlock>
+    <div class="post-image__block">
+      <img
+        src="https://demo.goodlayers.com/akea/wp-content/uploads/2018/11/pexels-photo-25284-1000x486.jpg"
+        alt="post image"
+      >
+    </div>
+  </ng-template>
+  <div class="post-image__likes">
+    <fa-icon [icon]="faHeart"></fa-icon>
+    456
+  </div>
+</div>

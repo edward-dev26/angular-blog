@@ -1,17 +1,6 @@
 <div class="post" *ngIf="post">
   <div class="post__header">
-    <div class="post__image-container">
-      <a class="post__image" [routerLink]="['/post', post.id]">
-        <img
-          src="https://demo.goodlayers.com/akea/wp-content/uploads/2018/11/pexels-photo-25284-1000x486.jpg"
-          alt="post image"
-        >
-      </a>
-      <div class="post__likes">
-        <fa-icon [icon]="faHeart"></fa-icon>
-        456
-      </div>
-    </div>
+    <app-post-image [routerLink]="['/post', post.id]" [animate]="true"></app-post-image>
   </div>
   <div class="post__body">
     <h2 class="post__title">

@@ -1,15 +1,30 @@
-<div class="card" *ngIf="post">
-  <div class="card-header">
-    <h2>{{ post.title }}</h2>
-    <small>{{ post.date | date:'yyyy-MM-dd' }}</small>
+<div class="post" *ngIf="post">
+  <div class="post__header">
+    <div class="post__image-container">
+      <a class="post__image" [routerLink]="['/post', post.id]">
+        <img
+          src="https://demo.goodlayers.com/akea/wp-content/uploads/2018/11/pexels-photo-25284-1000x486.jpg"
+          alt="post image"
+        >
+      </a>
+      <div class="post__likes">
+        <fa-icon [icon]="faHeart"></fa-icon>
+        456
+      </div>
+    </div>
   </div>
-  <div>
-    <small>{{ post.author }}</small>
+  <div class="post__body">
+    <h2 class="post__title">
+      <a [routerLink]="['/post', post.id]">{{ post.title }}</a>
+    </h2>
+    <div class="post__info">
+      <div class="post__info-item">{{ post.author | uppercase }}</div>
+      <div class="post__info-item">{{ post.date | date: 'longDate' | uppercase }}</div>
+    </div>
+    <div class="post__preview">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis consequatur, dolores eius facilis
+      laudantium omnis rem sapiente sit suscipit. Adipisci autem corporis cupiditate eaque error et neque perferendis
+      quos.
+    </div>
   </div>
-  <button
-    [routerLink]="['/post', post.id]"
-    class="btn btn-dark"
-  >
-    Open
-  </button>
 </div>

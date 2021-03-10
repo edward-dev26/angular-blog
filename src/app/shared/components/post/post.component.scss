@@ -1,0 +1,100 @@
+@import "src/app/shared/app.variables";
+
+.post {
+  margin-bottom: 70px;
+
+  &__header {
+    margin-bottom: 44px;
+  }
+
+  &__image {
+    display: block;
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: $color-black;
+    max-height: 340px;
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+        opacity: 0.5;
+      }
+    }
+
+    img {
+      opacity: 1;
+      transition: .3s ease-in-out;
+    }
+  }
+
+  &__title {
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+
+    &:hover {
+      a {
+        color: $color-orange;
+      }
+    }
+
+    a {
+      color: $color-dark;
+      transition: color .3s;
+    }
+  }
+
+  &__info {
+    display: flex;
+    padding-left: 12px;
+    margin-bottom: 20px;
+  }
+
+  &__info-item {
+    margin-right: 25px;
+    font-size: 12px;
+    color: $color-gray;
+    letter-spacing: 1px;
+    position: relative;
+    padding-right: 20px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 4px;
+      height: 2px;
+      width: 10px;
+      background-color: $color-orange;
+    }
+  }
+
+  &__preview {
+    font-size: 15px;
+    font-weight: 500;
+    color: $color-secondary;
+    line-height: 1.8;
+  }
+
+  &__likes {
+    height: 78px;
+    width: 78px;
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+    border-radius: 50%;
+    background-color: $color-white;
+    box-shadow: 0 0 25px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+    color: $color-dark-gray;
+    font-weight: 500;
+  }
+
+  &__image-container {
+    position: relative;
+  }
+}

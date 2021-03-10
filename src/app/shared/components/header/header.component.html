@@ -1,0 +1,31 @@
+<header class="header">
+  <ul class="header__nav-list">
+    <li
+      *ngFor="let link of links.left"
+      class="header__nav-item"
+    >
+      <a
+        [routerLink]="link.routerLink"
+        class="header__nav-link"
+        routerLinkActive="header__nav-link_active"
+      >
+        {{ link.title }}
+      </a>
+    </li>
+  </ul>
+  <h1 class="header__logo">Angular <span>Blog .</span></h1>
+  <ul class="header__nav-list">
+    <li
+      *ngFor="let link of links.right"
+      class="header__nav-item"
+    >
+      <a
+        [routerLink]="link.routerLink"
+        class="header__nav-link"
+        routerLinkActive="header__nav-link_active"
+      >
+        {{ link.title }}
+      </a>
+    </li>
+  </ul>
+</header>

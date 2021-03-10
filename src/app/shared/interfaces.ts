@@ -1,5 +1,10 @@
 export type TId = string | number;
 
+export interface Link {
+  title: string;
+  routerLink: string | string[];
+}
+
 export interface FbCreateResponse {
   name: string;
 }

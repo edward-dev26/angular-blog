@@ -11,12 +11,12 @@ import {QuillModule} from 'ngx-quill';
     CommonModule,
     QuillModule.forRoot(),
   ],
-  exports: [
-    HttpClientModule,
-    ReactiveFormsModule,
-    CommonModule,
-    QuillModule,
-  ],
+    exports: [
+        HttpClientModule,
+        ReactiveFormsModule,
+        CommonModule,
+        QuillModule,
+    ],
 })
 export class SharedModule {
 }

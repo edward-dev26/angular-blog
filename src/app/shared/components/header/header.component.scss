@@ -1,0 +1,43 @@
+@import "src/app/shared/app.variables";
+
+.header {
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__logo {
+    font-size: 24px;
+    color: $color-dark;
+
+    span {
+      color: $color-orange;
+    }
+  }
+
+  &__nav-list {
+    display: flex;
+  }
+
+  &__nav-link {
+    position: relative;
+    font-weight: 600;
+    padding: 10px 17px;
+
+    &:hover::after,
+    &_active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 17px;
+      height: 2px;
+      width: 15px;
+      background-color: $color-orange;
+    }
+
+    &_active,
+    &:hover {
+      color: $color-dark-gray;
+    }
+  }
+}

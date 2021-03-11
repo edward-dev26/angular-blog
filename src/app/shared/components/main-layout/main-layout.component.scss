@@ -1,0 +1,7 @@
+@import "src/app/shared/app.variables";
+
+.main-layout {
+  &__content {
+    min-height: calc(100vh - #{$header-height} - #{$footer-height});
+  }
+}

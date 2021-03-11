@@ -1,7 +1,7 @@
 @import "src/app/shared/app.variables";
 
 .header {
-  height: 89px;
+  height: $header-height;
   display: flex;
   justify-content: center;
   align-items: center;

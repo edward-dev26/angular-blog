@@ -8,6 +8,7 @@
         [routerLink]="link.routerLink"
         class="header__nav-link"
         routerLinkActive="header__nav-link_active"
+        [routerLinkActiveOptions]="{exact: true}"
       >
         {{ link.title }}
       </a>
@@ -23,6 +24,7 @@
         [routerLink]="link.routerLink"
         class="header__nav-link"
         routerLinkActive="header__nav-link_active"
+        [routerLinkActiveOptions]="{exact: true}"
       >
         {{ link.title }}
       </a>

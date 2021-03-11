@@ -1,0 +1,17 @@
+@import "src/app/shared/app.variables";
+
+.footer {
+  background-color: $color-navy;
+
+  &__copyright {
+    color: $color-light-gray;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .container {
+    height: $footer-height;
+    display: flex;
+    align-items: center;
+  }
+}

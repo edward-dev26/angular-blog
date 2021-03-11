@@ -1,8 +1,11 @@
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+
 export type TId = string | number;
 
 export interface Link {
   title: string;
   routerLink: string | string[];
+  icon?: IconDefinition;
 }
 
 export interface FbCreateResponse {

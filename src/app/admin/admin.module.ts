@@ -13,6 +13,7 @@ import {SearchPipe} from './shared/pipes/search.pipe';
 import { PostFormComponent } from './shared/components/post-form/post-form.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
 import {AlertService} from './shared/services/alert.service';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {AlertService} from './shared/services/alert.service';
     FormControlComponent,
     SearchPipe,
     PostFormComponent,
-    AlertComponent
+    AlertComponent,
+    HeaderComponent
   ],
   imports: [
     AdminRoutingModule,

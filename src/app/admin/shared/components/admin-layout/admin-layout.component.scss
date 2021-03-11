@@ -1,0 +1,8 @@
+@import "src/app/admin/shared/admin.variables";
+
+.admin-layout {
+  &__content {
+    margin-top: $header-height;
+    padding-top: 20px;
+  }
+}

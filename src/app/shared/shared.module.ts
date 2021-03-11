@@ -6,6 +6,8 @@ import {QuillModule} from 'ngx-quill';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {PostInfoComponent} from './components/post-info/post-info.component';
 import {FooterComponent} from './components/footer/footer.component';
+import { AvatarComponent } from './components/avatar/avatar.component';
+import {PopupDirective} from './directives/popup.directive';
 
 @NgModule({
   imports: [
@@ -23,8 +25,10 @@ import {FooterComponent} from './components/footer/footer.component';
     FontAwesomeModule,
     PostInfoComponent,
     FooterComponent,
+    AvatarComponent,
+    PopupDirective,
   ],
-  declarations: [PostInfoComponent, FooterComponent],
+  declarations: [PostInfoComponent, FooterComponent, AvatarComponent, PopupDirective],
 })
 export class SharedModule {
 }

@@ -1,0 +1,33 @@
+<header class="header">
+  <div class="header__logo">
+    <a [routerLink]="'/admin'">Angular Blog Admin</a>
+  </div>
+  <div class="header__nav">
+    <div class="popup">
+      <div class="popup__trigger" [appPopup]="dropdown">
+        <app-avatar [src]="'https://emilus.themenate.net/img/avatars/thumb-1.jpg'"></app-avatar>
+      </div>
+      <ng-template #dropdown>
+        <div class="popup__dropdown dropdown">
+          <div class="dropdown__header">
+            <app-avatar [src]="'https://emilus.themenate.net/img/avatars/thumb-1.jpg'"></app-avatar>
+            <div class="dropdown__info">
+              <p class="dropdown__name">Charlie Howard</p>
+              <p class="dropdown__position">Front End Developer</p>
+            </div>
+          </div>
+          <ul class="dropdown__links">
+            <li *ngFor="let link of links">
+              <a [routerLink]="link.routerLink" class="dropdown__link">
+                <span class="dropdown__icon">
+                  <fa-icon [icon]="link.icon"></fa-icon>
+                </span>
+                {{ link.title }}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</header>

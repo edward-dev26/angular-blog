@@ -3,6 +3,7 @@ import {NgModule, Provider} from '@angular/core';
 import {SharedModule} from './shared/shared.module';
 import {AppRoutingModule} from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import {AppLoaderModule} from './shared/app-loader.module';
 
 import {AppComponent} from './app.component';
 import {MainLayoutComponent} from './shared/components/main-layout/main-layout.component';
@@ -36,7 +37,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    AppLoaderModule
   ],
   providers: [INTERCEPTOR_PROVIDER],
   exports: [],

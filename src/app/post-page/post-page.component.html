@@ -1,21 +1,15 @@
-<div class="text-center" *ngIf="loading; else postBlock">
-  <p>Loading...</p>
-</div>
-
-<ng-template #postBlock>
-  <div class="post">
-    <div class="post__header">
-      <h2 class="post__title">{{ post.title }}</h2>
-      <div class="post__info">
-        <app-post-info
-          [data]="[
+<div class="post" *ngIf="post">
+  <div class="post__header">
+    <h2 class="post__title">{{ post.title }}</h2>
+    <div class="post__info">
+      <app-post-info
+        [data]="[
             post.author,
             post.date | date: 'longDate'
           ]"
-        ></app-post-info>
-      </div>
-      <app-post-image></app-post-image>
+      ></app-post-info>
     </div>
-    <quill-view-html [content]="post.content"></quill-view-html>
+    <app-post-image></app-post-image>
   </div>
-</ng-template>
+  <quill-view-html [content]="post.content"></quill-view-html>
+</div>

@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {PostsService} from '../shared/services/posts.service';
 import {switchMap} from 'rxjs/operators';
 import {Post} from '../shared/interfaces';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 interface Params {
   id: string;
@@ -14,17 +15,16 @@ interface Params {
   styleUrls: ['./post-page.component.scss']
 })
 export class PostPageComponent implements OnInit {
-  public loading = false;
   public post: Post;
 
   constructor(
     private route: ActivatedRoute,
-    private postService: PostsService
-  ) {
-  }
+    private postService: PostsService,
+    private ngxLoader: NgxUiLoaderService
+  ) {}
 
   ngOnInit() {
-    this.loading = true;
+    this.ngxLoader.start();
     this.route.params
       .pipe(
         switchMap((params: Params) => {
@@ -34,10 +34,10 @@ export class PostPageComponent implements OnInit {
       .subscribe(
         (post) => {
           this.post = post;
-          this.loading = false;
+          this.ngxLoader.stop();
         },
         () => {
-          this.loading = false;
+          this.ngxLoader.stop();
         });
   }
 }

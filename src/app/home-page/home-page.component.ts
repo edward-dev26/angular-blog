@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Post} from '../shared/interfaces';
 import {PostsService} from '../shared/services/posts.service';
 import {Subscription} from 'rxjs';
+import {NgxUiLoaderService} from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-home-page',
@@ -10,21 +11,21 @@ import {Subscription} from 'rxjs';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   public posts: Post[];
-  public loading = false;
   private subscriptions: Subscription[] = [];
 
   constructor(
-    private postsService: PostsService
+    private postsService: PostsService,
+    private ngxLoader: NgxUiLoaderService
   ) {}
 
   ngOnInit() {
-    this.loading = true;
+    this.ngxLoader.start();
     const subscription = this.postsService.getAll().subscribe(posts => {
         this.posts = posts;
-        this.loading = false;
+        this.ngxLoader.stop();
       },
       () => {
-        this.loading = false;
+        this.ngxLoader.stop();
       }
     );
 

@@ -4,8 +4,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {QuillModule} from 'ngx-quill';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import { PostInfoComponent } from './components/post-info/post-info.component';
-import { FooterComponent } from './components/footer/footer.component';
+import {PostInfoComponent} from './components/post-info/post-info.component';
+import {FooterComponent} from './components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
     QuillModule,
     FontAwesomeModule,
     PostInfoComponent,
-    FooterComponent
+    FooterComponent,
   ],
   declarations: [PostInfoComponent, FooterComponent],
 })

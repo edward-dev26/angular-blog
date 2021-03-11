@@ -6,10 +6,12 @@
     <h2 class="post__title">
       <a [routerLink]="['/post', post.id]">{{ post.title }}</a>
     </h2>
-    <div class="post__info">
-      <div class="post__info-item">{{ post.author | uppercase }}</div>
-      <div class="post__info-item">{{ post.date | date: 'longDate' | uppercase }}</div>
-    </div>
+    <app-post-info
+      [data]="[
+        post.author,
+        post.date | date: 'longDate'
+      ]"
+    ></app-post-info>
     <div class="post__preview">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis consequatur, dolores eius facilis
       laudantium omnis rem sapiente sit suscipit. Adipisci autem corporis cupiditate eaque error et neque perferendis

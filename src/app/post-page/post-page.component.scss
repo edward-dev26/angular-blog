@@ -1,17 +1,22 @@
+@import "src/app/shared/app.variables";
+
 .post {
-  .header {
+  padding: 20px 0 50px;
+
+  &__header {
+    margin-bottom: 35px;
+  }
+
+  &__title {
+    font-size: 28px;
+    color: $color-dark;
+    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 18px;
+  }
+
+  &__info {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  h1 {
-    margin-bottom: .5rem;
-  }
-
-  .info {
-    strong {
-      margin-right: 1rem;
-    }
+    justify-content: center;
   }
 }

@@ -4,6 +4,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {QuillModule} from 'ngx-quill';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { PostInfoComponent } from './components/post-info/post-info.component';
 
 @NgModule({
   imports: [
@@ -13,13 +14,15 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     QuillModule.forRoot(),
     FontAwesomeModule
   ],
-  exports: [
-    HttpClientModule,
-    ReactiveFormsModule,
-    CommonModule,
-    QuillModule,
-    FontAwesomeModule
-  ],
+    exports: [
+        HttpClientModule,
+        ReactiveFormsModule,
+        CommonModule,
+        QuillModule,
+        FontAwesomeModule,
+        PostInfoComponent
+    ],
+  declarations: [PostInfoComponent],
 })
 export class SharedModule {
 }

@@ -4,18 +4,17 @@
 
 <ng-template #postBlock>
   <div class="post">
-    <div class="header">
-      <h1>Post title</h1>
-      <button
-        [routerLink]="['/']"
-        class="btn btn-link"
-      >
-        Home page
-      </button>
-    </div>
-    <div class="info">
-      <strong>{{ post.author }}</strong>
-      <small>{{ post.date | date: 'yyyy-MM-dd' }}</small>
+    <div class="post__header">
+      <h2 class="post__title">{{ post.title }}</h2>
+      <div class="post__info">
+        <app-post-info
+          [data]="[
+            post.author,
+            post.date | date: 'longDate'
+          ]"
+        ></app-post-info>
+      </div>
+      <app-post-image></app-post-image>
     </div>
     <quill-view-html [content]="post.content"></quill-view-html>
   </div>

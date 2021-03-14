@@ -2,7 +2,9 @@
 
 .admin-layout {
   &__content {
+    min-height: calc(100vh - #{$header-height});
     margin-top: $header-height;
     padding-top: 20px;
+    background-color: #fafafb;
   }
 }

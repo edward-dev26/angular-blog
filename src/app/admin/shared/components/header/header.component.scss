@@ -20,6 +20,12 @@
       color: $color-primary;
     }
   }
+
+  &__nav-link {
+    color: $color-primary;
+    padding: 6px;
+    font-size: 17px;
+  }
 }
 
 .popup {
@@ -72,6 +78,12 @@
 
     &:hover {
       color: $color-blue;
+    }
+
+    &_btn {
+      border: none;
+      background-color: $color-white;
+      cursor: pointer;
     }
   }
 

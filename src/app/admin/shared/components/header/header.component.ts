@@ -1,13 +1,16 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Link} from '../../../../shared/interfaces';
 import {faSignOutAlt, faTimesCircle} from '@fortawesome/free-solid-svg-icons';
+import {AuthService} from '../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-admin-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  public faTimesCircle = faTimesCircle;
   public links: Link[] = [
     {
       title: 'Exit',
@@ -16,15 +19,18 @@ export class HeaderComponent implements OnInit {
     },
     {
       title: 'Sign Out',
-      routerLink: '/admin',
+      action: this.logout.bind(this),
       icon: faSignOutAlt
     }
   ];
 
-  constructor() {
-  }
+  constructor(
+    public authService: AuthService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/admin', 'login']);
   }
-
 }

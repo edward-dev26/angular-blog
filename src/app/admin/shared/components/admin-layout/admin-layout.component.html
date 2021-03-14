@@ -2,29 +2,9 @@
 
 <app-admin-header></app-admin-header>
 
-<!--<nav class="navbar bg-primary">-->
-<!--  <h1>-->
-<!--    <a routerLink="/">Angular Blog Admin</a>-->
-<!--  </h1>-->
-
-<!--  <ul>-->
-<!--    <li routerLinkActive="active" *ngIf="!auth.isAuthenticated(); else elseBlock;">-->
-<!--      <a [routerLink]="['/admin', 'login']">Login</a>-->
-<!--    </li>-->
-<!--    <ng-template #elseBlock>-->
-<!--      <li routerLinkActive="active">-->
-<!--        <a [routerLink]="['/admin', 'dashboard']">Dashboard</a>-->
-<!--      </li>-->
-<!--      <li routerLinkActive="active">-->
-<!--        <a [routerLink]="['/admin','post' ,'create']">Create post</a>-->
-<!--      </li>-->
-<!--      <li>-->
-<!--        <a href="#" (click)="logout($event)">Logout</a>-->
-<!--      </li>-->
-<!--    </ng-template>-->
-<!--  </ul>-->
-<!--</nav>-->
-
-<div class="container admin-layout__content">
-  <router-outlet></router-outlet>
+<div class="admin-layout__content">
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </div>
+

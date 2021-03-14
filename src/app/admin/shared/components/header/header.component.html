@@ -3,7 +3,7 @@
     <a [routerLink]="'/admin'">Angular Blog Admin</a>
   </div>
   <div class="header__nav">
-    <div class="popup">
+    <div class="popup" *ngIf="authService.isAuthenticated(); else noAuthLinks">
       <div class="popup__trigger" [appPopup]="dropdown">
         <app-avatar [src]="'https://emilus.themenate.net/img/avatars/thumb-1.jpg'"></app-avatar>
       </div>
@@ -18,16 +18,37 @@
           </div>
           <ul class="dropdown__links">
             <li *ngFor="let link of links">
-              <a [routerLink]="link.routerLink" class="dropdown__link">
+              <a
+                *ngIf="link.routerLink; else button"
+                [routerLink]="link.routerLink"
+                (click)="link.action && link.action()"
+                class="dropdown__link"
+              >
                 <span class="dropdown__icon">
                   <fa-icon [icon]="link.icon"></fa-icon>
                 </span>
                 {{ link.title }}
               </a>
+              <ng-template #button>
+                <button
+                  (click)="link.action && link.action()"
+                  class="dropdown__link dropdown__link_btn"
+                >
+                  <span class="dropdown__icon">
+                  <fa-icon [icon]="link.icon"></fa-icon>
+                </span>
+                  {{ link.title }}
+                </button>
+              </ng-template>
             </li>
           </ul>
         </div>
       </ng-template>
     </div>
+    <ng-template #noAuthLinks>
+      <a routerLink="/" class="header__nav-link">
+        <fa-icon [icon]="faTimesCircle"></fa-icon>
+      </a>
+    </ng-template>
   </div>
 </header>

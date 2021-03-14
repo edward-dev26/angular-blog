@@ -16,6 +16,7 @@ import {AuthInterceptor} from './shared/services/auth.interceptor';
 import {PostImageComponent} from './shared/components/post-image/post-image.component';
 
 import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -38,7 +39,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
     AppRoutingModule,
     SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    AppLoaderModule
+    AppLoaderModule,
+    BrowserAnimationsModule
   ],
   providers: [INTERCEPTOR_PROVIDER],
   exports: [],

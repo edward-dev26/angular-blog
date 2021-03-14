@@ -3,6 +3,7 @@
 @import '~quill/dist/quill.bubble.css';
 @import '~quill/dist/quill.snow.css';
 @import "app/shared/app.variables";
+@import "app/admin/shared/components/admin-table/admin-table.global";
 
 :root {
   --primary-color: #dc3545;
@@ -305,5 +306,4 @@ table th {
   }
 }
 
-html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

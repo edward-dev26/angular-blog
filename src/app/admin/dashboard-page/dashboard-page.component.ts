@@ -15,6 +15,8 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
   public loading = false;
   public term = '';
 
+  public columnsToDisplay = ['id', 'title', 'author', 'date', 'actions'];
+
   constructor(
     private postsService: PostsService,
     private alertService: AlertService
@@ -51,4 +53,5 @@ export class DashboardPageComponent implements OnInit, OnDestroy {
 
     this.subscriptions.push(subscription);
   }
+
 }

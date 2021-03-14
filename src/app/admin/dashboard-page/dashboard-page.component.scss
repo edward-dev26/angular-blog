@@ -1,5 +1,24 @@
+@import "src/app/admin/shared/admin.variables";
+
 .dashboard {
   &__edit {
     margin-right: 10px;
+  }
+}
+
+.posts-table {
+  &__title,
+  &__author {
+    color: $color-primary;
+    font-weight: 500;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+
+    span {
+      padding-left: 8px;
+    }
   }
 }

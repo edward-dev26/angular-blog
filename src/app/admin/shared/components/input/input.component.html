@@ -1,0 +1,17 @@
+<div
+  [ngClass]="{'input_focused': focused}"
+  class="input"
+  tabindex="1"
+>
+  <div class="input__icon" *ngIf="currentIcon">
+    <fa-icon [icon]="currentIcon"></fa-icon>
+  </div>
+  <input
+    [name]="name"
+    [type]="htmlType"
+    [placeholder]="placeholder"
+    (focus)="focused = true;"
+    (blur)="focused = false;"
+    class="input__field"
+  >
+</div>

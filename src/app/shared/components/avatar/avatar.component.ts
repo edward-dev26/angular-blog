@@ -1,4 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
+
+type TSize = 'small' | 'middle' | 'large';
 
 @Component({
   selector: 'app-avatar',
@@ -7,4 +9,5 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class AvatarComponent {
   @Input() src: string;
+  @Input() size: TSize = 'middle';
 }

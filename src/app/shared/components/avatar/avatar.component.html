@@ -1,3 +1,9 @@
-<div class="avatar">
+<div
+  class="avatar"
+  [ngClass]="{
+    'avatar_small': size === 'small',
+    'avatar_large': size === 'large'
+  }"
+>
   <img [src]="src" alt="avatar">
 </div>

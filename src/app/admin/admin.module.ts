@@ -14,6 +14,9 @@ import { PostFormComponent } from './shared/components/post-form/post-form.compo
 import { AlertComponent } from './shared/components/alert/alert.component';
 import {AlertService} from './shared/services/alert.service';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { AdminTableComponent } from './shared/components/admin-table/admin-table.component';
+import {MatTableModule} from '@angular/material/table';
+import {InputComponent} from './shared/components/input/input.component';
 
 @NgModule({
   declarations: [
@@ -26,12 +29,15 @@ import { HeaderComponent } from './shared/components/header/header.component';
     SearchPipe,
     PostFormComponent,
     AlertComponent,
-    HeaderComponent
+    HeaderComponent,
+    AdminTableComponent,
+    InputComponent
   ],
   imports: [
     AdminRoutingModule,
     FormsModule,
     SharedModule,
+    MatTableModule
   ],
   providers: [
     AuthGuard,

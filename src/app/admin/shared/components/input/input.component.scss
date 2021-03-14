@@ -1,0 +1,41 @@
+@import "src/app/admin/shared/admin.variables";
+
+.input {
+  border: $border-light;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all .3s;
+  display: flex;
+  align-items: center;
+
+  &:hover,
+  &_focused {
+    border-color: #699dff;
+  }
+
+  &_focused {
+    box-shadow: 0 0 0 2px rgba(62, 121, 247, .2);
+  }
+
+  &__field {
+    display: block;
+    height: 40px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $color-secondary;
+    padding: 0 8px;
+
+    &::placeholder {
+      color: $color-light-gray;
+    }
+  }
+
+  &__icon {
+    padding-left: 8px;
+    color: $color-light-gray;
+  }
+}
+

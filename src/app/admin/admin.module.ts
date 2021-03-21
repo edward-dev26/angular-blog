@@ -17,6 +17,11 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { AdminTableComponent } from './shared/components/admin-table/admin-table.component';
 import {MatTableModule} from '@angular/material/table';
 import {InputComponent} from './shared/components/input/input.component';
+import { ButtonComponent } from './shared/components/button/button.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -31,14 +36,19 @@ import {InputComponent} from './shared/components/input/input.component';
     AlertComponent,
     HeaderComponent,
     AdminTableComponent,
-    InputComponent
+    InputComponent,
+    ButtonComponent
   ],
-  imports: [
-    AdminRoutingModule,
-    FormsModule,
-    SharedModule,
-    MatTableModule
-  ],
+    imports: [
+        AdminRoutingModule,
+        FormsModule,
+        SharedModule,
+        MatTableModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatSortModule,
+        MatPaginatorModule
+    ],
   providers: [
     AuthGuard,
     AlertService

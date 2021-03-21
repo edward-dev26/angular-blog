@@ -1,0 +1,9 @@
+@import "src/app/admin/shared/admin.variables";
+
+.button {
+  border-radius: .625rem;
+
+  &_primary {
+    background-color: $color-blue;
+  }
+}

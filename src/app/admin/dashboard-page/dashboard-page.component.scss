@@ -8,7 +8,8 @@
 
 .posts-table {
   &__title,
-  &__author {
+  &__author,
+  &__empty {
     color: $color-primary;
     font-weight: 500;
   }
@@ -19,6 +20,24 @@
 
     span {
       padding-left: 8px;
+    }
+  }
+
+  &__empty {
+    text-align: center;
+  }
+}
+
+.actions {
+  &__btn {
+    color: $color-secondary;
+
+    span {
+      padding-left: 10px;
+    }
+
+    &_danger {
+      color: $color-danger;
     }
   }
 }

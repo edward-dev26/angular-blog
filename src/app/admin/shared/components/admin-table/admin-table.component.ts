@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-admin-table',
   templateUrl: './admin-table.component.html',
   styleUrls: ['./admin-table.component.scss']
 })
-export class AdminTableComponent implements OnInit {
+export class AdminTableComponent {
+  @Input() addBtnTitle = 'Add';
+  @Input() addRouterLink: string | any[];
+  @Output() filterChange = new EventEmitter<string>();
 
-  constructor() { }
+  public faPlusCircle = faPlusCircle;
 
-  ngOnInit(): void {
+  handleTermChange(term: string) {
+    this.filterChange.emit(term);
   }
-
 }

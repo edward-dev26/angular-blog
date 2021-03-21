@@ -1,0 +1,13 @@
+<button
+  mat-flat-button
+  class="button"
+  color="primary"
+  [ngClass]="{
+    'button_primary': type === 'primary',
+    'button_simple': type === 'simple',
+    'button_light': type === 'light'
+  }"
+  [routerLink]="routerLink"
+>
+  <ng-content></ng-content>
+</button>

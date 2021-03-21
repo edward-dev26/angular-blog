@@ -4,7 +4,14 @@
       <app-input
         placeholder="Search"
         type="search"
+        (ngModelChange)="handleTermChange($event)"
       ></app-input>
+    </div>
+    <div class="admin-table__btn-group">
+      <app-button type="primary" [routerLink]="addRouterLink">
+        <span class="admin-table__add-icon"><fa-icon [icon]="faPlusCircle"></fa-icon></span>
+        {{ addBtnTitle }}
+      </app-button>
     </div>
   </div>
   <div class="admin-table__table">

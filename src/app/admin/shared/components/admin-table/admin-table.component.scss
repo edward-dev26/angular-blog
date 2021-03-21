@@ -8,9 +8,15 @@
 
   &__header {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__control {
     max-width: 220px;
+  }
+
+  &__add-icon {
+    padding-right: 5px;
   }
 }

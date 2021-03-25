@@ -1,0 +1,21 @@
+@import "src/app/admin/shared/admin.variables";
+
+.form-card {
+  background-color: $color-white;
+  border-radius: $border-radius;
+  border: $border-light;
+  margin-bottom: 16px;
+  padding: 16px 0;
+
+  &__title {
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 25px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+
+  &__body {
+    padding: 0 20px;
+  }
+}

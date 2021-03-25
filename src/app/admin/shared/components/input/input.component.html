@@ -11,8 +11,8 @@
     [type]="htmlType"
     [placeholder]="placeholder"
     (focus)="focused = true;"
-    (blur)="focused = false;"
-    [value]="ngModel"
+    (blur)="handleBlur()"
+    [value]="value"
     (keyup)="handleKeyUp($event)"
     class="input__field"
   >

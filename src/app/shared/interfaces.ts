@@ -25,3 +25,8 @@ export interface Post {
   author: string;
   date: Date;
 }
+
+export interface Option {
+  title: string;
+  value: string | number;
+}

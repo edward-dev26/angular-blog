@@ -10,4 +10,8 @@ type TButton = 'primary' | 'light' | 'action' | 'simple';
 export class ButtonComponent {
     @Input() type: TButton = 'simple';
     @Input() routerLink: string | any[];
+
+    public get color() {
+        return this.type === 'primary' ? 'primary' : '';
+    }
 }

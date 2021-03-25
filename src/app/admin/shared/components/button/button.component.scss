@@ -1,9 +1,15 @@
 @import "src/app/admin/shared/admin.variables";
 
 .button {
-  border-radius: .625rem;
+  border-radius: $border-radius;
 
   &_primary {
     background-color: $color-blue;
+  }
+
+  &_light {
+    background-color: $color-white;
+    border: $border-light;
+    color: $color-secondary;
   }
 }

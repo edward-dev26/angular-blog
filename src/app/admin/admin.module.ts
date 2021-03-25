@@ -10,18 +10,22 @@ import {AuthGuard} from './shared/services/auth.guard';
 import {SharedModule} from '../shared/shared.module';
 import {FormControlComponent} from '../shared/components/form-control/form-control.component';
 import {SearchPipe} from './shared/pipes/search.pipe';
-import { PostFormComponent } from './shared/components/post-form/post-form.component';
-import { AlertComponent } from './shared/components/alert/alert.component';
+import {PostFormComponent} from './shared/components/post-form/post-form.component';
+import {AlertComponent} from './shared/components/alert/alert.component';
 import {AlertService} from './shared/services/alert.service';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { AdminTableComponent } from './shared/components/admin-table/admin-table.component';
+import {HeaderComponent} from './shared/components/header/header.component';
+import {AdminTableComponent} from './shared/components/admin-table/admin-table.component';
 import {MatTableModule} from '@angular/material/table';
 import {InputComponent} from './shared/components/input/input.component';
-import { ButtonComponent } from './shared/components/button/button.component';
+import {ButtonComponent} from './shared/components/button/button.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {FormWrapperComponent} from './shared/components/form-wrapper/form-wrapper.component';
+import {FormCardComponent} from './shared/components/form/form-card/form-card.component';
+import {MatSelectModule} from '@angular/material/select';
+import { SelectComponent } from './shared/components/fields/select/select.component';
 
 @NgModule({
   declarations: [
@@ -37,18 +41,22 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     HeaderComponent,
     AdminTableComponent,
     InputComponent,
-    ButtonComponent
+    ButtonComponent,
+    FormWrapperComponent,
+    FormCardComponent,
+    SelectComponent
   ],
-    imports: [
-        AdminRoutingModule,
-        FormsModule,
-        SharedModule,
-        MatTableModule,
-        MatButtonModule,
-        MatMenuModule,
-        MatSortModule,
-        MatPaginatorModule
-    ],
+  imports: [
+    AdminRoutingModule,
+    FormsModule,
+    SharedModule,
+    MatTableModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatSelectModule
+  ],
   providers: [
     AuthGuard,
     AlertService

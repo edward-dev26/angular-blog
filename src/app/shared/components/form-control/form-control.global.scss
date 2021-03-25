@@ -1,0 +1,54 @@
+@import "src/app/admin/shared/admin.variables";
+
+.form-control {
+  .ql-container {
+    height: 150px;
+    border: $border-light;
+    border-radius: 0 0 10px 10px;
+    color: $color-secondary;
+    font-size: 14px;
+    line-height: 1.5;
+
+    .ql-editor {
+      padding: 12px 8px;
+
+      &.ql-blank::before {
+        color: $color-light-gray;
+        font-style: normal;
+        left: 8px;
+      }
+    }
+  }
+
+  .ql-toolbar {
+    border: $border-light;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .mat-select-trigger {
+    height: 40px;
+    font-size: 14px;
+    line-height: 1.5;
+    border: $border-light;
+    border-radius: 10px;
+    transition: all .3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+
+    &:hover,
+    &_focused {
+      border-color: #699dff;
+    }
+
+    &_focused {
+      box-shadow: 0 0 0 2px rgba(62, 121, 247, .2);
+    }
+
+    .mat-select-value {
+      max-width: 100%;
+      color: $color-secondary;
+    }
+  }
+}

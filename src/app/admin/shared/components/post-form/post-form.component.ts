@@ -43,6 +43,9 @@ export class PostFormComponent implements OnInit, OnDestroy {
       author: new FormControl(null, [
         Validators.required,
         Validators.minLength(6)
+      ]),
+      category: new FormControl(null, [
+        Validators.required,
       ])
     });
   }

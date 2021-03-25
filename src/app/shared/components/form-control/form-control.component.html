@@ -3,25 +3,35 @@
   [ngClass]="{invalid: isInvalid()}"
   [formGroup]="form"
 >
-  <label [for]="name">{{ label }}</label>
+  <label class="form-control__label" [for]="name">{{ label }}</label>
   <ng-container [ngSwitch]="type">
     <quill-editor
       *ngSwitchCase="'editor'"
       [id]="name"
       [formControlName]="name"
       [placeholder]="placeholder"
-      [styles]="{
-        height: '150px'
-      }"
     ></quill-editor>
-    <input
-      *ngSwitchDefault
-      [id]="name"
-      [type]="htmlType"
+    <mat-select
+      *ngSwitchCase="'select'"
       [formControlName]="name"
       [placeholder]="placeholder"
-      class="form-control__field"
+      [id]="name"
     >
+      <mat-option
+        *ngFor="let option of options"
+        [value]="option.value"
+      >
+        {{ option.title }}
+      </mat-option>
+    </mat-select>
+    <app-input
+      *ngSwitchDefault
+      [placeholder]="placeholder"
+      [htmlType]="htmlType"
+      [name]="name"
+      [formControlName]="name"
+    >
+    </app-input>
   </ng-container>
   <div
     *ngIf="isInvalid()"

@@ -1,5 +1,12 @@
-.form-control {
-  &__field {
+@import "src/app/admin/shared/admin.variables";
 
+.form-control {
+  &__label {
+    font-size: 14px;
+    color: $color-primary;
+    line-height: 21px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
   }
 };

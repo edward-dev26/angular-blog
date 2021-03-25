@@ -1,0 +1,15 @@
+.post-form {
+  display: flex;
+
+  div:nth-child(odd) {
+    margin-right: 16px;
+  }
+
+  &__left {
+    flex: 1 1 70%;
+  }
+
+  &__right {
+    flex: 1 1 30%;
+  }
+}

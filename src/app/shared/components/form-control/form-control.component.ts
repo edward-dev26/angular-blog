@@ -1,8 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {FormGroup} from '@angular/forms';
+import {Option} from '../../interfaces';
 
 type TGetMessage = (error: string | object) => string | void;
-type TControlType = 'input' | 'editor';
+type TControlType = 'input' | 'editor' | 'select';
 
 @Component({
   selector: 'app-form-control',
@@ -17,6 +18,7 @@ export class FormControlComponent {
   @Input() type: TControlType = 'input';
   @Input() htmlType = 'text';
   @Input() validationMessages: { [key: string]: string | TGetMessage };
+  @Input() options: Option[] = [];
 
   isInvalid() {
     return this.form.get(this.name).touched && this.form.get(this.name).invalid;

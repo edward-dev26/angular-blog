@@ -26,6 +26,7 @@ import {FormWrapperComponent} from './shared/components/form-wrapper/form-wrappe
 import {FormCardComponent} from './shared/components/form/form-card/form-card.component';
 import {MatSelectModule} from '@angular/material/select';
 import { SelectComponent } from './shared/components/fields/select/select.component';
+import { ImageUploadComponent } from './shared/components/fields/image-upload/image-upload.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SelectComponent } from './shared/components/fields/select/select.compon
     ButtonComponent,
     FormWrapperComponent,
     FormCardComponent,
-    SelectComponent
+    SelectComponent,
+    ImageUploadComponent
   ],
   imports: [
     AdminRoutingModule,

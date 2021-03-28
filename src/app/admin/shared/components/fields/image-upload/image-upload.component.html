@@ -1,0 +1,24 @@
+<label
+  class="image-upload"
+  [ngClass]="{'image-upload_focused': focused}"
+  (dragenter)="handleDrag($event)"
+  (dragover)="handleDrag($event)"
+  (dragleave)="handleDragLeave($event)"
+  (drop)="handleDrop($event)"
+>
+  <div class="image-upload__placeholder" *ngIf="!value; else preview">
+    <img src="../../../../../../assets/images/file-loader.png" alt="placeholder">
+    <p class="image-upload__placeholder-text">Click or drag file to upload</p>
+  </div>
+
+  <input type="file" hidden (change)="handleChange($event)">
+</label>
+
+<ng-template #preview>
+  <div class="image-upload__clear" (click)="handleClear($event)">
+    <fa-icon [icon]="faTimes"></fa-icon>
+  </div>
+  <div class="image-upload__preview">
+    <img [src]="value" alt="preview">
+  </div>
+</ng-template>

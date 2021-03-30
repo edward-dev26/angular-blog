@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 type TButton = 'primary' | 'light' | 'action' | 'simple';
 
@@ -9,7 +9,9 @@ type TButton = 'primary' | 'light' | 'action' | 'simple';
 })
 export class ButtonComponent {
     @Input() type: TButton = 'simple';
+    @Input() htmlType = 'button';
     @Input() routerLink: string | any[];
+    @Input() disabled = false;
 
     public get color() {
         return this.type === 'primary' ? 'primary' : '';

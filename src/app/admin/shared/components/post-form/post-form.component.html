@@ -1,60 +1,68 @@
-<form [formGroup]="form" (ngSubmit)="handleSubmit()" class="post-form">
-  <div class="post-form__left">
-    <app-form-card title="Basic info">
-      <app-form-control
-        name="title"
-        label="Post Title"
-        placeholder="Type post title"
-        [form]="form"
-        [validationMessages]="validationMessages"
-      ></app-form-control>
-      <app-form-control
-        name="content"
-        label="Post Content"
-        type="editor"
-        placeholder="Type post content"
-        [form]="form"
-        [validationMessages]="validationMessages"
-      ></app-form-control>
-    </app-form-card>
-  </div>
-  <div class="post-form__right">
-    <app-form-card title="Media">
-      <app-image-upload></app-image-upload>
-    </app-form-card>
-    <app-form-card title="Organization">
-      <app-form-control
-        name="author"
-        label="Post Author"
-        placeholder="Type post author"
-        [form]="form"
-        [validationMessages]="validationMessages"
-      ></app-form-control>
-      <app-form-control
-        type="select"
-        name="category"
-        label="Post Category"
-        placeholder="Select post category"
-        [options]="[
-          {
-            title: 'Category 1',
-            value: 1
-          },
-          {
-            title: 'Category 2',
-            value: 2
-          }
-        ]"
-        [form]="form"
-        [validationMessages]="validationMessages"
-      ></app-form-control>
-    </app-form-card>
-  </div>
-  <!--  <button-->
-  <!--    class="btn btn-block btn-success"-->
-  <!--    type="submit"-->
-  <!--    [disabled]="form.invalid"-->
-  <!--  >-->
-  <!--    {{ btnText }}-->
-  <!--  </button>-->
+<form [formGroup]="form">
+  <app-form-wrapper
+    [title]="title"
+    [saveBtnTitle]="saveBtnTitle"
+    [disabledSaveBtn]="form.invalid"
+    (onSubmit)="handleSubmit()"
+    (onDiscard)="handleDiscard()"
+  >
+    <div class="post-form">
+      <div class="post-form__left">
+        <app-form-card title="Basic info">
+          <app-form-control
+            name="title"
+            label="Post Title"
+            placeholder="Type post title"
+            [form]="form"
+            [validationMessages]="validationMessages"
+          ></app-form-control>
+          <app-form-control
+            name="content"
+            label="Post Content"
+            type="editor"
+            placeholder="Type post content"
+            [form]="form"
+            [validationMessages]="validationMessages"
+          ></app-form-control>
+        </app-form-card>
+      </div>
+      <div class="post-form__right">
+        <app-form-card title="Media">
+          <app-form-control
+            name="preview"
+            type="image-upload"
+            [form]="form"
+            [validationMessages]="validationMessages"
+          ></app-form-control>
+        </app-form-card>
+        <app-form-card title="Organization">
+          <app-form-control
+            name="author"
+            label="Post Author"
+            placeholder="Type post author"
+            [form]="form"
+            [validationMessages]="validationMessages"
+          ></app-form-control>
+          <app-form-control
+            type="select"
+            name="category"
+            label="Post Category"
+            placeholder="Select post category"
+            [options]="[
+              {
+                title: 'Category 1',
+                value: 1
+              },
+              {
+                title: 'Category 2',
+                value: 2
+              }
+            ]"
+            [form]="form"
+            [validationMessages]="validationMessages"
+          ></app-form-control>
+        </app-form-card>
+      </div>
+    </div>
+  </app-form-wrapper>
 </form>

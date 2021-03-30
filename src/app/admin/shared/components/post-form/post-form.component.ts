@@ -21,7 +21,8 @@ export class PostFormComponent implements OnInit, OnDestroy {
   };
   private subscriptions: Subscription[] = [];
   @Input() isSubmitting = false;
-  @Input() btnText = 'Add';
+  @Input() title: string;
+  @Input() saveBtnTitle: string;
   @Input() initialValue$: Observable<PostFormValue>;
   @Output() onSubmit = new EventEmitter<FormGroup>();
 
@@ -46,6 +47,9 @@ export class PostFormComponent implements OnInit, OnDestroy {
       ]),
       category: new FormControl(null, [
         Validators.required,
+      ]),
+      preview: new FormControl(null, [
+        Validators.required
       ])
     });
   }
@@ -57,6 +61,17 @@ export class PostFormComponent implements OnInit, OnDestroy {
   }
 
   handleSubmit() {
-    this.onSubmit.emit(this.form);
+    if (this.form.valid) {
+      this.onSubmit.emit(this.form);
+    } else {
+      this.form.markAllAsTouched();
+    }
+  }
+
+  handleDiscard() {
+    if (this.form.dirty) {
+      this.form.reset();
+      this.form.markAllAsTouched();
+    }
   }
 }

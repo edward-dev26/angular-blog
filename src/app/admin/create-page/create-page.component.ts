@@ -26,6 +26,8 @@ export class CreatePageComponent {
       content: form.value.content,
       author: form.value.author,
       date: new Date(),
+      category: form.value.category,
+      image: form.value.preview
     };
 
     return this.postsService.create(post)

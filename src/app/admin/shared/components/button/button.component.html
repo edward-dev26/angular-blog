@@ -1,6 +1,7 @@
 <button
   mat-flat-button
   class="button"
+  [type]="htmlType"
   [color]="color"
   [ngClass]="{
     'button_primary': type === 'primary',
@@ -8,6 +9,7 @@
     'button_light': type === 'light'
   }"
   [routerLink]="routerLink"
+  [disabled]="disabled"
 >
   <ng-content></ng-content>
 </button>

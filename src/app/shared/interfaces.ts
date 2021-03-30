@@ -1,4 +1,4 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import {IconDefinition} from '@fortawesome/fontawesome-svg-core';
 
 export type TId = string | number;
 
@@ -18,12 +18,19 @@ export interface User {
   password: string;
 }
 
+export interface Category {
+  id: TId;
+  title: string;
+}
+
 export interface Post {
   id?: TId;
   title: string;
   content: string;
   author: string;
   date: Date;
+  category: Category | TId;
+  image: string;
 }
 
 export interface Option {

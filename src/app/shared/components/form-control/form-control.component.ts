@@ -3,7 +3,7 @@ import {FormGroup} from '@angular/forms';
 import {Option} from '../../interfaces';
 
 type TGetMessage = (error: string | object) => string | void;
-type TControlType = 'input' | 'editor' | 'select';
+type TControlType = 'input' | 'editor' | 'select' | 'image-upload';
 
 @Component({
   selector: 'app-form-control',

@@ -8,7 +8,7 @@
 >
   <div class="image-upload__placeholder" *ngIf="!value; else preview">
     <img src="../../../../../../assets/images/file-loader.png" alt="placeholder">
-    <p class="image-upload__placeholder-text">Click or drag file to upload</p>
+    <p class="image-upload__placeholder-text">{{ placeholder }}</p>
   </div>
 
   <input type="file" hidden (change)="handleChange($event)">

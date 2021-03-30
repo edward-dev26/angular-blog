@@ -24,6 +24,11 @@
         {{ option.title }}
       </mat-option>
     </mat-select>
+    <app-image-upload
+      *ngSwitchCase="'image-upload'"
+      [formControlName]="name"
+      [placeholder]="placeholder"
+    ></app-image-upload>
     <app-input
       *ngSwitchDefault
       [placeholder]="placeholder"

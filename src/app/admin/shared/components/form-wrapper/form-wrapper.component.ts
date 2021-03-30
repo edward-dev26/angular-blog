@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-form-wrapper',
@@ -8,5 +8,8 @@ import {Component, Input} from '@angular/core';
 export class FormWrapperComponent {
   @Input() title = 'Form';
   @Input() saveBtnTitle = 'Save';
+  @Input() disabledSaveBtn = false;
   @Input() discardBtnTitle = 'Discard';
+  @Output() onSubmit = new EventEmitter();
+  @Output() onDiscard = new EventEmitter();
 }

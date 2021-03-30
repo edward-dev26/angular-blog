@@ -1,6 +1,7 @@
-import {Component, forwardRef, Provider} from '@angular/core';
+import {Component, forwardRef, Input, Provider} from '@angular/core';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {faTimes} from '@fortawesome/free-solid-svg-icons';
+import {AlertService} from '../../../services/alert.service';
 
 const VALUE_ACCESSOR: Provider = {
   provide: NG_VALUE_ACCESSOR,
@@ -15,14 +16,18 @@ const VALUE_ACCESSOR: Provider = {
   providers: [VALUE_ACCESSOR]
 })
 export class ImageUploadComponent implements ControlValueAccessor {
+  @Input() placeholder = 'Click or drag file to upload';
+
   private val: string | null = null;
   public faTimes = faTimes;
   public focused = false;
 
-  private onChange(_: any) {
-  }
+  private onChange(_: any) {}
+  private onTouched(_: any) {}
 
-  private onTouched(_: any) {
+  constructor(
+    private alert: AlertService
+  ) {
   }
 
   get value() {
@@ -32,6 +37,7 @@ export class ImageUploadComponent implements ControlValueAccessor {
   set value(value) {
     this.val = value;
     this.onChange(value);
+    this.onTouched(true);
   }
 
   registerOnChange(fn: any): void {
@@ -48,18 +54,28 @@ export class ImageUploadComponent implements ControlValueAccessor {
 
   toBase64(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
-      const reader = new FileReader();
+      if (file) {
+        const reader = new FileReader();
 
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = error => reject(error);
+      } else {
+        reject('File wasn\'t provided');
+      }
     });
   }
 
-  async handleChange(e: Event) {
-    const file = (e.target as HTMLInputElement).files[0];
+  async setFile(file) {
+    try {
+      this.value = await this.toBase64(file);
+    } catch (e) {
+      this.alert.danger(e);
+    }
+  }
 
-    this.value = await this.toBase64(file);
+  handleChange(e: Event) {
+    this.setFile((e.target as HTMLInputElement).files[0]);
   }
 
   handleClear(e: Event) {
@@ -70,9 +86,8 @@ export class ImageUploadComponent implements ControlValueAccessor {
   async handleDrop(e: DragEvent) {
     e.preventDefault();
     e.stopPropagation();
-    const file = e.dataTransfer.files[0];
 
-    this.value = await this.toBase64(file);
+    await this.setFile(e.dataTransfer.files[0]);
     this.focused = false;
   }
 

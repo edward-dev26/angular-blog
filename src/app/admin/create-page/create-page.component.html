@@ -1,11 +1,8 @@
 <div>
-  <app-form-wrapper
+  <app-post-form
+    (onSubmit)="handleSubmit($event)"
+    [isSubmitting]="isSubmitting"
     title="Add New Post"
     saveBtnTitle="Add"
-  >
-    <app-post-form
-      (onSubmit)="handleSubmit($event)"
-      [isSubmitting]="isSubmitting"
-    ></app-post-form>
-  </app-form-wrapper>
+  ></app-post-form>
 </div>

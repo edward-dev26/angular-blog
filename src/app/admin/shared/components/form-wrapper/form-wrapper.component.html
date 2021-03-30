@@ -3,10 +3,10 @@
     <h3 class="form-wrapper__title">{{ title }}</h3>
     <div class="form-wrapper__btn-group">
       <div class="form-wrapper__btn">
-        <app-button type="light">{{ discardBtnTitle }}</app-button>
+        <app-button (click)="onDiscard.emit()" type="light">{{ discardBtnTitle }}</app-button>
       </div>
       <div class="form-wrapper__btn">
-        <app-button type="primary">{{ saveBtnTitle }}</app-button>
+        <app-button [disabled]="disabledSaveBtn" (click)="onSubmit.emit()" type="primary">{{ saveBtnTitle }}</app-button>
       </div>
     </div>
   </div>

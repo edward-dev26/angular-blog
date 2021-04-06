@@ -2,7 +2,7 @@
   <app-form-wrapper
     [title]="title"
     [saveBtnTitle]="saveBtnTitle"
-    [disabledSaveBtn]="form.invalid"
+    [disabledSaveBtn]="form.invalid || !form.dirty"
     (onSubmit)="handleSubmit()"
     (onDiscard)="handleDiscard()"
   >
@@ -13,6 +13,14 @@
             name="title"
             label="Post Title"
             placeholder="Type post title"
+            [form]="form"
+            [validationMessages]="validationMessages"
+          ></app-form-control>
+          <app-form-control
+            name="preview"
+            type="textarea"
+            label="Post Preview"
+            placeholder="Type post preview"
             [form]="form"
             [validationMessages]="validationMessages"
           ></app-form-control>
@@ -29,7 +37,7 @@
       <div class="post-form__right">
         <app-form-card title="Media">
           <app-form-control
-            name="preview"
+            name="image"
             type="image-upload"
             [form]="form"
             [validationMessages]="validationMessages"

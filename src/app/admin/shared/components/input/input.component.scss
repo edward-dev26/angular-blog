@@ -1,4 +1,5 @@
 @import "src/app/admin/shared/admin.variables";
+@import "src/app/admin/shared/admin.mixins";
 
 .input {
   border: $border-light;
@@ -18,19 +19,11 @@
   }
 
   &__field {
+    @include control-field();
     display: block;
     height: 40px;
     width: 100%;
     border: none;
-    outline: none;
-    font-size: 14px;
-    line-height: 1.5;
-    color: $color-secondary;
-    padding: 0 8px;
-
-    &::placeholder {
-      color: $color-light-gray;
-    }
   }
 
   &__icon {

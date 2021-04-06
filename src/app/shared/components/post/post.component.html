@@ -1,6 +1,11 @@
 <div class="post" *ngIf="post">
   <div class="post__header">
-    <app-post-image [routerLink]="['/post', post.id]" [animate]="true"></app-post-image>
+    <app-post-image
+      [src]="post.image"
+      [routerLink]="['/post', post.id]"
+      [animate]="true"
+      [likesCount]="post.likesCount"
+    ></app-post-image>
   </div>
   <div class="post__body">
     <h2 class="post__title">
@@ -12,10 +17,6 @@
         post.date | date: 'longDate'
       ]"
     ></app-post-info>
-    <div class="post__preview">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda blanditiis consequatur, dolores eius facilis
-      laudantium omnis rem sapiente sit suscipit. Adipisci autem corporis cupiditate eaque error et neque perferendis
-      quos.
-    </div>
+    <div class="post__preview">{{ post.preview }}</div>
   </div>
 </div>

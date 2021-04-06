@@ -9,6 +9,8 @@ import {faHeart} from '@fortawesome/free-solid-svg-icons';
 export class PostImageComponent {
   @Input() routerLink: string | any[];
   @Input() animate = false;
+  @Input() src;
+  @Input() likesCount: number;
 
   public faHeart = faHeart;
 }

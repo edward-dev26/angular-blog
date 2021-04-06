@@ -1,4 +1,5 @@
 @import "src/app/admin/shared/admin.variables";
+@import "src/app/admin/shared/admin.mixins";
 
 .form-control {
   &__label {
@@ -8,5 +9,13 @@
     font-weight: 500;
     margin-bottom: 8px;
     display: block;
+  }
+
+  textarea {
+    @include control-field();
+    resize: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    height: 100px;
   }
 };

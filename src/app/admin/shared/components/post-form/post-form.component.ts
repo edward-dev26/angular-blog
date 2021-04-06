@@ -1,11 +1,15 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Observable, Subscription} from 'rxjs';
+import {TId} from '../../../../shared/interfaces';
 
 export interface PostFormValue {
   title: string;
   content: string;
   author: string;
+  category: TId;
+  preview: string;
+  image: string;
 }
 
 @Component({
@@ -17,9 +21,12 @@ export class PostFormComponent implements OnInit, OnDestroy {
   public form: FormGroup;
   public validationMessages = {
     required: 'This field is required!',
-    minlength: (error) => `Min length is ${error.requiredLength} symbols!`
+    minlength: (error) => `Min length is ${error.requiredLength} symbols!`,
+    maxlength: (error) => `Max length is ${error.requiredLength} symbols!`,
   };
   private subscriptions: Subscription[] = [];
+  private initialValue: PostFormValue | {} = {};
+
   @Input() isSubmitting = false;
   @Input() title: string;
   @Input() saveBtnTitle: string;
@@ -28,7 +35,8 @@ export class PostFormComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const subscription = this.initialValue$?.subscribe(initialValue => {
-      this.form.setValue(initialValue);
+      this.resetToInitialValue(initialValue);
+      this.initialValue = initialValue;
     });
 
     this.subscriptions.push(subscription);
@@ -49,9 +57,18 @@ export class PostFormComponent implements OnInit, OnDestroy {
         Validators.required,
       ]),
       preview: new FormControl(null, [
+        Validators.required,
+        Validators.maxLength(400)
+      ]),
+      image: new FormControl(null, [
         Validators.required
       ])
     });
+  }
+
+  resetToInitialValue(initialValue) {
+    this.form.reset(initialValue);
+    this.form.markAsPristine();
   }
 
   ngOnDestroy() {
@@ -63,6 +80,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
   handleSubmit() {
     if (this.form.valid) {
       this.onSubmit.emit(this.form);
+      this.form.markAsPristine();
     } else {
       this.form.markAllAsTouched();
     }
@@ -70,8 +88,7 @@ export class PostFormComponent implements OnInit, OnDestroy {
 
   handleDiscard() {
     if (this.form.dirty) {
-      this.form.reset();
-      this.form.markAllAsTouched();
+      this.resetToInitialValue(this.initialValue);
     }
   }
 }

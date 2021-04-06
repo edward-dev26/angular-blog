@@ -41,7 +41,10 @@ export class EditPageComponent implements OnInit {
         this.initialValue$.next({
           title: post.title,
           content: post.content,
-          author: post.author
+          author: post.author,
+          preview: post.preview,
+          category: post.category,
+          image: post.image
         });
       });
   }

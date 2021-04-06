@@ -29,8 +29,10 @@ export interface Post {
   content: string;
   author: string;
   date: Date;
-  category: Category | TId;
+  category: TId;
   image: string;
+  likesCount: number;
+  preview: string;
 }
 
 export interface Option {

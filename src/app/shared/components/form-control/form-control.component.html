@@ -11,6 +11,7 @@
       [formControlName]="name"
       [placeholder]="placeholder"
     ></quill-editor>
+
     <mat-select
       *ngSwitchCase="'select'"
       [formControlName]="name"
@@ -24,11 +25,19 @@
         {{ option.title }}
       </mat-option>
     </mat-select>
+
     <app-image-upload
       *ngSwitchCase="'image-upload'"
       [formControlName]="name"
       [placeholder]="placeholder"
     ></app-image-upload>
+
+    <textarea
+      *ngSwitchCase="'textarea'"
+      [formControlName]="name"
+      [placeholder]="placeholder"
+    ></textarea>
+
     <app-input
       *ngSwitchDefault
       [placeholder]="placeholder"
@@ -37,6 +46,7 @@
       [formControlName]="name"
     >
     </app-input>
+
   </ng-container>
   <div
     *ngIf="isInvalid()"

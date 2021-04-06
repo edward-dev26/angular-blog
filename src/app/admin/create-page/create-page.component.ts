@@ -3,6 +3,7 @@ import {Post} from '../../shared/interfaces';
 import {PostsService} from '../../shared/services/posts.service';
 import {FormGroup} from '@angular/forms';
 import {AlertService} from '../shared/services/alert.service';
+import {PostFormValue} from '../shared/components/post-form/post-form.component';
 
 @Component({
   selector: 'app-create-page',
@@ -20,14 +21,17 @@ export class CreatePageComponent {
 
   handleSubmit(form: FormGroup) {
     this.isSubmitting = true;
+    const values: PostFormValue = form.value;
 
     const post: Post = {
-      title: form.value.title,
-      content: form.value.content,
-      author: form.value.author,
+      title: values.title,
+      content: values.content,
+      author: values.author,
+      category: values.category,
+      image: values.image,
+      preview: values.preview,
       date: new Date(),
-      category: form.value.category,
-      image: form.value.preview
+      likesCount: 0
     };
 
     return this.postsService.create(post)

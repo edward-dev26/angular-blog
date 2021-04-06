@@ -9,7 +9,7 @@
           ]"
       ></app-post-info>
     </div>
-    <app-post-image></app-post-image>
+    <app-post-image [src]="post.image" [likesCount]="post.likesCount"></app-post-image>
   </div>
   <quill-view-html [content]="post.content"></quill-view-html>
 </div>
